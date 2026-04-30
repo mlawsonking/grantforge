@@ -14,8 +14,8 @@ const SECTIONS = [
 // Stripe Payment Link URLs — REPLACE THESE in production with your real links.
 // See DEPLOY_GUIDE.md step 5 for how to create them.
 const PAYMENT_LINKS = {
-  single: "https://buy.stripe.com/test_REPLACE_SINGLE",
-  pack: "https://buy.stripe.com/test_REPLACE_PACK"
+  single: "https://buy.stripe.com/test_dRm4gB8Yy99f0MS2NieEo01",
+  pack: "https://buy.stripe.com/test_8x27sN0s299fansfA4eEo02"
 };
 
 // ---- state ----
