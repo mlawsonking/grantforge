@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrantForge — SBIR Proposal Drafter with Reviewer Simulation</title>
+<meta name="description" content="Paste your SBIR or NIH solicitation. Get a compliance checklist for free. Get section drafts scored by an AI reviewer for $49. No subscription.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="logo">Grant<span>Forge</span></div>
+  </div>
+</header>
+
+<main class="container">
+
+  <h1>Your grant section, scored by the reviewer before you submit it.</h1>
+  <p class="lede">Paste an SBIR, NIH, or NSF solicitation. We extract the actual review criteria, draft your sections against them, then run a hostile reviewer simulation that scores each section 1-9 and tells you exactly what will get you triaged. $49 per section. $149 for the full pack.</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">1. Paste your solicitation</h2>
+    <p class="small">Paste the relevant portions: review criteria, eligibility, required sections, page limits, formatting rules. We don't need the whole 80-page document — just the parts that define how you'll be scored. <strong>This step is free.</strong></p>
+    <div class="field">
+      <label for="solicitation">Solicitation excerpt</label>
+      <textarea id="solicitation" placeholder="Paste the review criteria, eligibility, required sections, formatting rules..."></textarea>
+    </div>
+    <button class="btn" id="parse-btn">Parse solicitation (free)</button>
+    <p class="small" id="parse-error" style="color: var(--danger); margin-top: 8px;" hidden></p>
+  </div>
+
+  <div id="parsed-output" class="card hidden">
+    <h2 style="margin-top:0">What we extracted</h2>
+    <div id="parsed-content"></div>
+  </div>
+
+  <div id="paywall-section" class="card hidden">
+    <h2 style="margin-top:0">2. Add your project description</h2>
+    <p>Describe what you're building, why it matters, the technical approach, the team, and any preliminary data. The more specific you are, the better the draft. Your text is saved across the payment redirect — you won't lose it.</p>
+    <div class="field">
+      <label for="project-desc">Project description</label>
+      <textarea id="project-desc" placeholder="Project: We're developing... The technical approach is... Our team includes... Preliminary data shows..."></textarea>
+    </div>
+
+    <h2>3. Pick a tier</h2>
+    <div class="grid grid-2">
+      <div class="card" style="margin:0">
+        <h3 style="margin-top:0">Single section — $49</h3>
+        <p>One section drafted + scored against the review criteria. Choose any of: Specific Aims, Significance, Innovation, Approach, or Commercialization.</p>
+        <ul>
+          <li>One AI-drafted section</li>
+          <li>Hostile reviewer scorecard (1-9 NIH or 1-5 NSF/DoD)</li>
+          <li>Top 3 prioritized revisions</li>
+        </ul>
+        <button class="btn" id="pay-single-btn">Pay $49 →</button>
+      </div>
+      <div class="card" style="margin:0; border-color: var(--accent);">
+        <h3 style="margin-top:0">Full pack — $149 <span class="badge badge-success">Best value</span></h3>
+        <p>All 5 sections drafted + scored. Specific Aims, Significance, Innovation, Approach, Commercialization. Anchored against the $5,995 a grant writer charges for the same scope.</p>
+        <ul>
+          <li>5 drafted sections</li>
+          <li>Per-section reviewer scorecard</li>
+          <li>15 prioritized revisions across the proposal</li>
+        </ul>
+        <button class="btn" id="pay-pack-btn">Pay $149 →</button>
+      </div>
+    </div>
+    <p class="small" style="margin-top: 16px;">One-time payment. No subscription. We never store your project description on our servers — it lives in your browser session and is sent to Anthropic's API only when you click draft.</p>
+  </div>
+
+  <div id="workspace" class="hidden">
+    <h2>Your draft workspace</h2>
+    <p>Payment confirmed. Draft each section, then run the reviewer scorecard. Drafts and scores are saved in your browser — close this tab and come back later if needed.</p>
+    <div id="workspace-sections"></div>
+  </div>
+
+  <h2>Why this exists</h2>
+  <p>Hiring a grant writer for an SBIR Phase I costs $3,000–$15,000. ChatGPT will write you a section for free, but it won't tell you whether the section will actually score well — and it doesn't know what review criteria your specific solicitation uses.</p>
+  <p>GrantForge does both. It writes against the actual published criteria, then plays the role of a tired reviewer with 15 proposals on their desk who is looking for reasons to mark you down. The scorecard is the real product. The draft is the warm-up.</p>
+
+  <h2>What you'll get</h2>
+  <ul>
+    <li><strong>Compliance checklist (free)</strong> — every page limit, font rule, mandatory certification, and formatting requirement extracted from your solicitation.</li>
+    <li><strong>Section draft (paid)</strong> — written in agency house style, with placeholders marked clearly where you need to insert specific data the AI shouldn't fabricate.</li>
+    <li><strong>Reviewer scorecard (paid)</strong> — 1-9 NIH or 1-5 NSF/DoD score per criterion, fatal flaws flagged separately from major and minor concerns, and the top 3 specific edits that will lift your score the most.</li>
+  </ul>
+
+  <h2>What this is not</h2>
+  <p>This is a drafting and review aid, not a submission service. The AI does not verify scientific accuracy, does not check your citations, and does not guarantee funding. Federal review is human, subjective, and partly luck. Use the output as a strong first draft and a private peer review — then have a human collaborator read it before you submit.</p>
+
+  <h2>FAQ</h2>
+  <h3>Which agencies are supported?</h3>
+  <p>Anything that publishes review criteria in its solicitation: NSF SBIR/STTR, NIH R-series and SBIR, NIST SBIR, DoD SBIR/STTR, DoE SBIR, USDA SBIR, NASA SBIR. The parser reads whatever you paste — agency-specific quirks (NSF's Project Pitch, NIH's Specific Aims one-pager) are recognized automatically.</p>
+
+  <h3>Can I get a refund if the output is bad?</h3>
+  <p>Yes. Email refunds@[your-domain] within 7 days with the session ID and a one-line note about what didn't work, and we'll refund you. We'd rather know what's wrong than fight a chargeback.</p>
+
+  <h3>Is my project idea private?</h3>
+  <p>Your text is sent to Anthropic's Claude API, governed by their data policy (no training on inputs by default). We don't store your project description on our servers. We log payment events (Stripe session ID, tier, email) for accounting only.</p>
+
+  <h3>What if my solicitation is custom or non-SBIR?</h3>
+  <p>It still works as long as the solicitation publishes review criteria. Foundation grants, state-level innovation funds, and corporate research grants all work. The output adapts to whatever criteria you paste.</p>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>GrantForge is a drafting and review aid. Not a substitute for legal, scientific, or grant-writing counsel. © 2026.</p>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

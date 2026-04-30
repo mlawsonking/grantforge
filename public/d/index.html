@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBIR proposal due soon? Score your sections before the reviewer does.</title>
+<meta name="description" content="Paste your solicitation. We draft each section against the actual review criteria, then score it as a hostile reviewer would. $49 per section.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <div class="container-narrow">
+    <div class="logo">Grant<span>Forge</span></div>
+  </div>
+</header>
+
+<main class="container-narrow">
+
+  <h1>Your SBIR section, scored before the reviewer sees it.</h1>
+  <p class="lede">Paste your solicitation. We extract the review criteria, draft your section against them, then run a hostile reviewer simulation that tells you exactly what will get you triaged. <strong>$49.</strong></p>
+
+  <div class="urgency">⏱ Most users start because their deadline is &lt; 14 days out. The first section takes ~3 minutes from paste to scored draft.</div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Step 1 — Paste your solicitation (free)</h2>
+    <div class="field">
+      <textarea id="solicitation" placeholder="Paste the review criteria, eligibility, required sections, formatting rules..."></textarea>
+    </div>
+    <button class="btn btn-large" id="parse-btn">Parse it →</button>
+    <p class="small" id="parse-error" style="color: var(--danger); margin-top: 8px;" hidden></p>
+  </div>
+
+  <div id="parsed-output" class="card hidden">
+    <h2 style="margin-top:0">Here's what the reviewers will be scoring you on:</h2>
+    <div id="parsed-content"></div>
+  </div>
+
+  <div id="paywall-section" class="card hidden">
+    <h2 style="margin-top:0">Step 2 — Add your project description</h2>
+    <div class="field">
+      <textarea id="project-desc" placeholder="What you're building, the technical approach, the team, preliminary data..."></textarea>
+    </div>
+
+    <h2>Step 3 — Unlock drafting + scoring</h2>
+    <div class="card" style="margin:0; border-color: var(--accent);">
+      <h3 style="margin-top:0">$49 — one section, drafted + scored</h3>
+      <p>Pick any one of: Specific Aims, Significance, Innovation, Approach, Commercialization. Get a draft in agency house style + a reviewer scorecard with the top 3 revisions that lift your score most.</p>
+      <button class="btn btn-large" id="pay-single-btn">Pay $49 →</button>
+    </div>
+    <details style="margin-top: 12px">
+      <summary class="small" style="cursor:pointer">Need all 5 sections? Full pack — $149</summary>
+      <div style="margin-top: 12px">
+        <p>Specific Aims, Significance, Innovation, Approach, Commercialization. All drafted, all scored. Anchored against the $5,995 a grant writer charges for the same scope.</p>
+        <button class="btn" id="pay-pack-btn">Pay $149 →</button>
+      </div>
+    </details>
+    <p class="small" style="margin-top: 16px;">One-time payment. 7-day refund. No subscription.</p>
+  </div>
+
+  <div id="workspace" class="hidden">
+    <h2>Your draft workspace</h2>
+    <div id="workspace-sections"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container-narrow">
+    <p>Drafting + review aid. Not a substitute for human grant-writing counsel. © 2026.</p>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
